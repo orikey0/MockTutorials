@@ -1,8 +1,9 @@
 package Biz;
 
-import Client.FileIOClient;
-import Req.FileRequest;
-import Res.FileResponse;
+import com.orikey.tutor.client.FileIOClient;
+import com.orikey.tutor.req.FileRequest;
+import com.orikey.tutor.res.FileResponse;
+import com.orikey.tutor.biz.FileIOBiz;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,11 +35,11 @@ public class FileIOBizTest {
         FileRequest request = new FileRequest();
         request.setName("Title");
 //        Mock Client
-        when(fileIOClient.FileRead(any())).thenReturn(5);
-        when(fileIOClient.FileWrite(any())).thenReturn(5);
+        when(fileIOClient.fileRead(any())).thenReturn(5);
+        when(fileIOClient.fileWrite(any())).thenReturn(5);
 
 //        Mock结果，进行校验
-        FileResponse response = fileIOBiz.GetFile(request);
+        FileResponse response = fileIOBiz.getFile(request);
 
         Assert.assertNotNull(response);
         Assert.assertEquals(response.getValue(),"5 5");
